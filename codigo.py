@@ -181,7 +181,7 @@ if archivo is not None:
     except Exception as e:
         st.error(f"Hubo un error al procesar el archivo: {e}")
         st.stop()
-if st.session_state[df_original] is not None:
+if st.session_state['df_original'] is not None::
     st.write("Vista previa de los datos (Disponible fuera del IF de carga):")
     st.dataframe(st.session_state.df_original.head(5))
 
