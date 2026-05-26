@@ -182,7 +182,7 @@ if archivo is not None:
         st.error(f"Hubo un error al procesar el archivo: {e}")
         st.stop()
 
-    if boton:
+    if boton is True:
         with st.spinner("Procesando datos... Por favor espera."):
             try:
                 df = df_original.copy()
@@ -204,4 +204,4 @@ if archivo is not None:
                     mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
                 )
             except Exception as processing_error:
-                st.error(f"Error en los cálculos financieros: {processing_error}")
+                st.error(f"Error: {processing_error}")
