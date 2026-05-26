@@ -178,7 +178,8 @@ boton = st.button('Genera el BFP')
 # 4. Ejecución de la lógica
 if archivo is not None:
     try:
-        st.session_state.df_original = cargar_datos(archivo)
+        df_original = cargar_datos(archivo)
+        st.session_state.df_original
         st.success("¡Archivo cargado con éxito en memoria!")
         st.write("Vista previa de los datos:")
         st.dataframe(df_original.head(5), width="stretch")
