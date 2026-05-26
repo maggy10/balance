@@ -202,6 +202,6 @@ if archivo is not None:
                     #data=archivo_excel,
                    # file_name='Balance_Financiero_Proyectado.xlsx',
                     #mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-                )
+                #)
             except Exception as processing_error:
                 st.error(f"Error: {processing_error}")
