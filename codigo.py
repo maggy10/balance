@@ -186,7 +186,7 @@ if archivo is not None:
         with st.spinner("Procesando datos... Por favor espera."):
             try:
                 df = df_original.copy()
-                tabla = df(balance)
+                tabla = balance(df)
                 st.subheader("Balance Financiero Proyectado (Millones)")
                 st.dataframe(tabla, width="stretch")
 
