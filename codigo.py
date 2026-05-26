@@ -186,22 +186,23 @@ if archivo is not None:
         with st.spinner("Procesando datos... Por favor espera."):
             try:
                 df = df_original.copy()
-                tabla = balance(df)
+                #tabla = balance(df)
+                tabla =df.head(5)
                 st.subheader("Balance Financiero Proyectado (Millones)")
                 st.dataframe(tabla, width="stretch")
 
-                #Exportación a Excel
-                #buffer = io.BytesIO()
-                #with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
+                Exportación a Excel
+                buffer = io.BytesIO()
+                with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
                     #tabla.to_excel(writer, index=False, sheet_name='Balance')
 
-                #archivo_excel = buffer.getvalue()
+                archivo_excel = buffer.getvalue()
 
-                #st.download_button(
-                   # label="Descargar Tabla en Excel ⬇️ ",
-                    #data=archivo_excel,
-                   # file_name='Balance_Financiero_Proyectado.xlsx',
-                    #mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-                #)
+                st.download_button(
+                    label="Descargar Tabla en Excel ⬇️ ",
+                    data=archivo_excel,
+                    file_name='Balance_Financiero_Proyectado.xlsx',
+                    mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                )
             except Exception as processing_error:
                 st.error(f"Error: {processing_error}")
