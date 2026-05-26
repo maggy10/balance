@@ -191,7 +191,7 @@ if archivo is not None:
                 st.subheader("Balance Financiero Proyectado (Millones)")
                 st.dataframe(tabla, width="stretch")
 
-                Exportación a Excel
+                #Exportación a Excel
                 buffer = io.BytesIO()
                 with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
                     #tabla.to_excel(writer, index=False, sheet_name='Balance')
