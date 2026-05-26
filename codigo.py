@@ -174,35 +174,15 @@ boton = st.button('Genera el BFP')
 # 4. Ejecución de la lógica
 if archivo is not None:
     try:
-        df_original = cargar_datos(archivo)
+        st.session_state.df_original = cargar_datos(archivo)
         st.success("¡Archivo cargado con éxito en memoria!")
         st.write("Vista previa de los datos:")
         st.dataframe(df_original.head(5), width="stretch")
     except Exception as e:
         st.error(f"Hubo un error al procesar el archivo: {e}")
         st.stop()
+if st.session_state.df_original is not None:
+    st.write("Vista previa de los datos (Disponible fuera del IF de carga):")
+    st.dataframe(st.session_state.df_original.head(5))
 
-    if boton is True:
-        with st.spinner("Procesando datos... Por favor espera."):
-            try:
-                df = df_original.copy()
-                #tabla = balance(df)
-                tabla =df.head(5)
-                st.subheader("Balance Financiero Proyectado (Millones)")
-                st.dataframe(tabla, width="stretch")
-
-                #Exportación a Excel
-                buffer = io.BytesIO()
-                with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
-                    #tabla.to_excel(writer, index=False, sheet_name='Balance')
-
-                     archivo_excel = buffer.getvalue()
-
-                st.download_button(
-                    label="Descargar Tabla en Excel ⬇️ ",
-                    data=archivo_excel,
-                    file_name='Balance_Financiero_Proyectado.xlsx',
-                    mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-                )
-            except Exception as processing_error:
-                st.error(f"Error: {processing_error}")
+    
