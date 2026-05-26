@@ -186,14 +186,14 @@ if archivo is not None:
         with st.spinner("Procesando datos... Por favor espera."):
             try:
                 df = df_original.copy()
-                tabla = balance(df)
+                tabla = df
                 st.subheader("Balance Financiero Proyectado (Millones)")
                 st.dataframe(tabla, width="stretch")
 
-                # Exportación a Excel
-                #buffer = io.BytesIO()
-                #with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
-                 #   tabla.to_excel(writer, index=False, sheet_name='Balance')
+                #Exportación a Excel
+                buffer = io.BytesIO()
+                with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
+                    tabla.to_excel(writer, index=False, sheet_name='Balance')
 
                 #archivo_excel = buffer.getvalue()
 
