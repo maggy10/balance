@@ -241,3 +241,7 @@ with gr.Blocks(theme=gr.themes.Monochrome()) as demo:
 # Lanzar la aplicación
 if __name__ == "__main__":
     demo.launch()
+
+git add app.py
+git commit -m "Add app file"
+git push
